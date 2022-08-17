@@ -1,0 +1,54 @@
+<mat-card class="book-details">
+  <mat-card-content>
+    <div *ngIf="currentBook?.id; else elseBlock">
+      <pre>{{ bookForm.value | json }}</pre>
+
+      <form [formGroup]="bookForm">
+        <mat-form-field appearance="fill">
+          <mat-label>Title</mat-label>
+          <input formControlName="title" matInput placeholder="Title" />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Author</mat-label>
+          <input formControlName="author" matInput placeholder="Author" />
+        </mat-form-field>
+
+        <div>
+          <label>{{ bookForm.value.percentComplete || 0 }}% Complete</label
+          >
+        </div>
+        <mat-slider
+          class="percent-complete"
+          [max]="100"
+          [min]="0"
+          [step]="1"
+          formControlName="percentComplete"
+        >
+        </mat-slider>
+
+        <div>
+          <mat-checkbox formControlName="favorite">Favorite</mat-checkbox>
+        </div>
+      </form>
+    </div>
+
+    <ng-template #elseBlock>
+      <div class="select-book">
+        <h2>Select a Book or</h2>
+        <div>
+          <button (click)="addNew()" mat-button>Add New Book</button>
+        </div>
+
+      </div>
+
+    </ng-template>
+  </mat-card-content>
+  <mat-card-actions>
+    <div  *ngIf="currentBook?.id">
+        <button (click)="resetData()" mat-button>Reset Data</button>
+        <button (click)="saveData()" mat-button>Save Data</button>
+    </div>
+
+  </mat-card-actions>
+</mat-card>

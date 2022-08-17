@@ -12,7 +12,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Web: Getting Started
 
 ```
-git clone https://github.com/ervinOrion/hands-on-workshop.git
+git clone https://github.com/ervinOrion/angular-hands-on-workshop.git
 cd workshop-project
 npm i
 npm start

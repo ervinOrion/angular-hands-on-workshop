@@ -45,7 +45,7 @@ currentBook: Partial<Book> = null;
 
   addNew() {
     const value: Partial<Book> = {
-      id: 100,
+      id: + new Date(),
       title: '',
       author: '',
       favorite: false,

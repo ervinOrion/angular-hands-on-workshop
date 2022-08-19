@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Book } from '../models/books.model';
 
-const BASE_URL = 'http://localhost:3000';
+// const BASE_URL = 'http://localhost:3000';
+const BASE_URL = 'https://my-json-server.typicode.com/ervinOrion/angular-hands-on-workshop-json-db';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,7 @@ const BASE_URL = 'http://localhost:3000';
 export class BooksService {
 
   model = 'books';
+  useLocal = BASE_URL.indexOf('localhost') > -1;
 
   constructor(private http: HttpClient) {
   }

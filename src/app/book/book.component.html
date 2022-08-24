@@ -1,26 +1,27 @@
-<p>book works!</p>
+<div class="books-container">
 
-<h1>{{person.name}}</h1>
-<h1>{{person.surname}}</h1>
-<hr>
+  <div class="book-list-list">
+    <mat-card *ngFor="let book of data" class="book-list book-card">
+      <mat-card-header>
+          <mat-card-title>{{book.title}}</mat-card-title>
+          <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image class="book-card__image" [src]="book.coverUrl">
+
+      <mat-card-actions>
+        <button mat-button (click)="showDetails(book)">Details</button>
+      </mat-card-actions>
 
 
-<span *ngFor="let item of arr">{{item}} </span>
+    </mat-card>
+  </div>
 
-<hr>
+  <div class="book-list-details">
+    <pre>{{selectedBook | json}}</pre>
+  </div>
+</div>
 
-<img [src]="imageUrl">
-<hr>
 
-<button [ngClass]="clicked ? 'btn-color' : ''"
- (click)="onClick()">click Me</button>
- <hr>
- <div>
-<label>FontSize (px): {{fontSizePx || 0}}
 
-  <input [(ngModel)]="fontSizePx">
 
- </label>
-
- </div>
 

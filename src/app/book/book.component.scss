@@ -1,4 +1,33 @@
-.btn-color {
-  background-color: blue;
-  color: white;
+.books-container {
+  display: flex;
+  justify-content: space-around;
+
+  .book-list-list {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .book-list-details {
+    width: auto;
+  }
+}
+
+
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book-card {
+  width: 200px;
+  margin: 5px;
+
+  &.selected-book {
+    background-color: beige;
+  }
+
+  &__image {
+    height: 250px;
+  }
 }

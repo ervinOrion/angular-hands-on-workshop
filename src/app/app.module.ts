@@ -8,12 +8,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { BookComponent } from './book/book.component';
 import { FormsModule } from '@angular/forms';
+import { RouteChild1Component } from './routes-example/route-child1/route-child1.component';
+import { RouteChild2Component } from './routes-example/route-child2/route-child2.component';
+import { RouteExampleComponent } from './routes-example/route-example/route-example.component';
+import { PipeDirectiveComponent } from './pipe-directive/pipe-directive.component';
+import { CustomDateFormatPipe } from './pipe-directive/pipes/custom-date-format.pipe';
+import { HighlighterDirective } from './pipe-directive/directives/highlighter.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    BookComponent
+    BookComponent,
+    RouteExampleComponent,
+    RouteChild1Component,
+    RouteChild2Component,
+    PipeDirectiveComponent,
+    CustomDateFormatPipe,
+    HighlighterDirective
   ],
   imports: [
     BrowserModule,

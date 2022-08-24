@@ -1,0 +1,25 @@
+<mat-toolbar>
+  Child Routes Example
+</mat-toolbar>
+<div>
+  <div>
+    <mat-card>
+      <mat-card-content>
+        <mat-list>
+        <mat-list-item
+        [routerLink]="['/routes/child1']">
+          Child Component 1
+        </mat-list-item>
+
+        <mat-list-item
+        [routerLink]="['/routes/child2']">
+          Child Component 2
+        </mat-list-item>
+      </mat-list>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

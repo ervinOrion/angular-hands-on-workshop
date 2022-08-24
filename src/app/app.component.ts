@@ -10,5 +10,8 @@ export class AppComponent {
   links = [
     { path: '/home', icon: 'home', title: 'Home' },
     { path: '/books', icon: 'view_list', title: 'Books' },
+    { path: '/routes', icon: 'arrow_outward', title: 'Routes' },
+    { path: '/pipe-directive', icon: 'filter_alt', title: 'Pipe & Directive' },
+
   ];
 }

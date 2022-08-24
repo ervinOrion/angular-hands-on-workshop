@@ -1,0 +1,26 @@
+<p>book works!</p>
+
+<h1>{{person.name}}</h1>
+<h1>{{person.surname}}</h1>
+<hr>
+
+
+<span *ngFor="let item of arr">{{item}} </span>
+
+<hr>
+
+<img [src]="imageUrl">
+<hr>
+
+<button [ngClass]="clicked ? 'btn-color' : ''"
+ (click)="onClick()">click Me</button>
+ <hr>
+ <div>
+<label>FontSize (px): {{fontSizePx || 0}}
+
+  <input [(ngModel)]="fontSizePx">
+
+ </label>
+
+ </div>
+

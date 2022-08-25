@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Book } from './models/book.model';
 
 @Component({
@@ -58,6 +59,15 @@ export class BookComponent implements OnInit {
 
   selectedBook: Book = null;
 
+  bookForm = new FormGroup({
+    title: new FormControl<string>(''),
+    author: new FormControl<string>(''),
+    favorite: new FormControl<boolean>(false),
+    percentComplete: new FormControl<number>(0),
+  });
+
+
+
 
   constructor() { }
 
@@ -66,6 +76,16 @@ export class BookComponent implements OnInit {
 
   showDetails(book: Book) {
     this.selectedBook = book;
+    this.setFormData(book);
+  }
+
+  setFormData(book: Book) {
+    this.bookForm.setValue({
+      title: book.title,
+      author: book.author,
+      favorite: book.favorite,
+      percentComplete: book.percentComplete
+    })
   }
 
 }

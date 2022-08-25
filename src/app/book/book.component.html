@@ -1,27 +1,53 @@
 <div class="books-container">
-
   <div class="book-list-list">
     <mat-card *ngFor="let book of data" class="book-list book-card">
       <mat-card-header>
-          <mat-card-title>{{book.title}}</mat-card-title>
-          <mat-card-subtitle>{{book.author}}</mat-card-subtitle>
+        <mat-card-title>{{ book.title }}</mat-card-title>
+        <mat-card-subtitle>{{ book.author }}</mat-card-subtitle>
       </mat-card-header>
-      <img mat-card-image class="book-card__image" [src]="book.coverUrl">
+      <img mat-card-image class="book-card__image" [src]="book.coverUrl" />
 
       <mat-card-actions>
         <button mat-button (click)="showDetails(book)">Details</button>
       </mat-card-actions>
-
-
     </mat-card>
   </div>
 
   <div class="book-list-details">
-    <pre>{{selectedBook | json}}</pre>
+    <div *ngIf="!!selectedBook; else elseBlock">
+
+    <form [formGroup]="bookForm">
+      <mat-form-field apperiance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput formControlName="title" placeholder="Title" />
+      </mat-form-field>
+
+      <mat-form-field apperiance="fill">
+        <mat-label>Author</mat-label>
+        <input matInput formControlName="author" placeholder="Author" />
+      </mat-form-field>
+
+      <div>
+        <label> {{bookForm.value.percentComplete || 0}}% Complete</label>
+      </div>
+
+      <mat-slider
+        min="0"
+        max="100"
+        step="1"
+        formControlName="percentComplete"
+      ></mat-slider>
+
+      <div>
+        <mat-checkbox formControlName="favorite">Favorite</mat-checkbox>
+      </div>
+
+    </form>
+  </div>
+  <ng-template #elseBlock>
+    <div class="select-book">
+      <h2>Select a Book</h2>
+    </div>
+  </ng-template>
   </div>
 </div>
-
-
-
-
-

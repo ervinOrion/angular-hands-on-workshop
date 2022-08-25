@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
 import { BookComponent } from './book/book.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     MaterialModule,
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule
   ],
   providers: [],

@@ -9,7 +9,17 @@
   }
 
   .book-list-details {
-    width: auto;
+    width: 100%;
+    max-width: 450px;
+  }
+
+  mat-card-content {
+    overflow: auto;
+    min-height: 400px;
+  }
+
+  mat-card {
+    min-height: 400px;
   }
 }
 

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Observable, take } from 'rxjs';
 import { Book } from './models/book.model';
+import { BookService } from './services/book.service';
 
 @Component({
   selector: 'app-book',
@@ -9,56 +11,8 @@ import { Book } from './models/book.model';
 })
 export class BookComponent implements OnInit {
 
-  data: Book[] = [
-      {
-        id: 1,
-        title: "Angular Projects",
-        author: "Aristeidis Bampakos",
-        percentComplete: 26,
-        purchaseLink: "https://www.amzn.com/1800205260",
-        coverUrl: "https://images-na.ssl-images-amazon.com/images/I/41ozUFXCXOS._SX404_BO1,204,203,200_.jpg",
-        favorite: true
-      },
-      {
-        id: 2,
-        title: "Angular Cookbook",
-        author: "Muhammad Ahsan Ayaz",
-        percentComplete: 26,
-        purchaseLink: "https://www.amzn.com/1838989439",
-        coverUrl: "https://images-na.ssl-images-amazon.com/images/I/411QTHyJ12L._SX404_BO1,204,203,200_.jpg",
-        favorite: true
-      },
-      {
-        id: 3,
-        title: "Learning Angular",
-        author: "Aristeidis Bampakos",
-        purchaseLink: "https://www.amazon.com/dp/1839210664",
-        coverUrl: "https://images-na.ssl-images-amazon.com/images/I/41tbeEEyfUL._SX404_BO1,204,203,200_.jpg",
-        favorite: false,
-        percentComplete: 26
-      },
-      {
-        id: 4,
-        title: "JavaScript: The Definitive Guide",
-        author: "David Flanagan",
-        percentComplete: 26,
-        purchaseLink: "https://www.amazon.com/gp/product/1491952024",
-        coverUrl: "https://images-na.ssl-images-amazon.com/images/I/51HbNW6RzhL._SX375_BO1,204,203,200_.jpg",
-        favorite: false
-      },
-      {
-        id: 5,
-        title: "Eloquent JavaScript, 3rd Edition",
-        author: "Marijn Haverbeke",
-        percentComplete: 26,
-        purchaseLink: "https://www.amazon.com/gp/product/1593279507",
-        coverUrl: "https://images-na.ssl-images-amazon.com/images/I/51InjRPaF7L._SX377_BO1,204,203,200_.jpg",
-        favorite: true
-      }
-    ]
-
+  books$: Observable<Book[]>;
   selectedBook: Book = null;
-
   bookForm = new FormGroup({
     title: new FormControl<string>(''),
     author: new FormControl<string>(''),
@@ -69,9 +23,14 @@ export class BookComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor(private _bookService: BookService) { }
 
   ngOnInit(): void {
+    this.fetchData();
+  }
+
+  fetchData() {
+    this.books$ = this._bookService.all();
   }
 
   showDetails(book: Book) {
@@ -88,4 +47,12 @@ export class BookComponent implements OnInit {
     })
   }
 
+  saveData() {
+    const updatedData: Book = {...this.selectedBook, ...this.bookForm.value};
+    this._bookService.update(updatedData)
+    .pipe(take(1))
+    .subscribe(() => {
+      this.fetchData();
+    });
+  }
 }

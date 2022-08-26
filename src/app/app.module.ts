@@ -9,12 +9,16 @@ import { MaterialModule } from './material.module';
 import { BookComponent } from './book/book.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { BookListComponent } from './book/book-list/book-list.component';
+import { BookDetailsComponent } from './book/book-details/book-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    BookComponent
+    BookComponent,
+    BookListComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,

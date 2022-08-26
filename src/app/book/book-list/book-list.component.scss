@@ -1,0 +1,17 @@
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.book-card {
+  width: 200px;
+  margin: 5px;
+
+  &.selected-book {
+    background-color: beige;
+  }
+
+  &__image {
+    height: 250px;
+  }
+}
